@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://re12mo3y6o7x"]
+
+[ext_resource type="PackedScene" uid="uid://dxus6nejplu3n" path="res://assets/gltf/floor_grass_sliced_B.gltf" id="1_lei07"]
+[ext_resource type="PackedScene" uid="uid://lviu0gw71dkq" path="res://assets/gltf/floor_grass_sliced_A.gltf" id="2_fu52h"]
+[ext_resource type="PackedScene" uid="uid://rrvmx31gf7g5" path="res://assets/gltf/floor_grass_sliced_C.gltf" id="3_sxekd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8n8p"]
+size = Vector3(2.000473, 0.50115967, 2.0004578)
+
+[node name="Main Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0363264, 8.670999)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0034241676, -0.047674775)
+
+[node name="MiddleFloor" parent="Floor" instance=ExtResource("1_lei07")]
+
+[node name="floor_grass_sliced_A2" parent="Floor/MiddleFloor" instance=ExtResource("2_fu52h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9991878, 0.003, 0)
+
+[node name="floor_grass_sliced_C2" parent="Floor/MiddleFloor" instance=ExtResource("3_sxekd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9924102, 0.003, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/MiddleFloor"]
+skeleton = NodePath("../..")
+
+[node name="floor_grass_sliced_B2" parent="Floor/MiddleFloor" instance=ExtResource("1_lei07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9918088, 0, -0.0009999983)
+
+[node name="floor_grass_sliced_B3" parent="Floor/MiddleFloor" instance=ExtResource("1_lei07")]
+transform = Transform3D(-0.0016929341, 0, 0.99999857, 0, 1, 0, -0.99999857, 0, -0.0016929341, -1.9976101, 0.0039622486, 1.9988675)
+
+[node name="floor_grass_sliced_B4" parent="Floor/MiddleFloor" instance=ExtResource("1_lei07")]
+transform = Transform3D(-0.0016929341, 0, 0.99999857, 0, 1, 0, -0.99999857, 0, -0.0016929341, -1.9976101, 0.0039622486, 3.9973893)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.657189, 0.7376438, 0.0010667443)
+shape = SubResource("BoxShape3D_l8n8p")
